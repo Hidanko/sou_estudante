@@ -10,18 +10,22 @@
 </h:head>
 
 <h:body>
-	<div class="m-12 lg-12">
-		<div align="right">
-			<p:button value="ENTRAR" outcome="login" style="align-right" />
-		</div>
-		<div style="margin-top: 20%" class="login-card ui-fluid">
-			<div align="center" style="display: block; text-align: center">
-				<p:outputLabel value="SOU ESTUDANTE" style="width: 400px;font-size:50" />
+	<div class="m-12 lg-12 login-card " style="margin-top: 20%">
+		<div class="m-4 lg-4" align="center">
+			<div class="m-12 lg-12">
+				<p:outputLabel value="Login  " for="login" />
+				<p:inputText id="login" maxlength="55" value="#{loginMB.login}" />
+
 			</div>
-		</div>
-		<div align="center" style="marging-top:5%" >
-			<p:button value="INSCREVA-SE" outcome="login"
-				style="align-right;background-color: deepskyblue;" />
+			<div class="m-12 lg-12" style="margin-top: 1%">
+				<p:outputLabel value="Senha" for="senha" />
+				<p:inputText id="senha" maxlength="55" type="password"
+					value="#{loginMB.senha}" />
+				<div class="m-12 lg-12" style="margin-top: 3%">
+					<p:commandButton value="Fazer login"
+						outcome="#{loginMB.validarLogin()}" />
+				</div>
+			</div>
 		</div>
 	</div>
 </h:body>
