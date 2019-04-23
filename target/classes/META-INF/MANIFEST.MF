@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: SouEstudante
 Implementation-Version: 0.0.1
-Built-By: gusta
+Built-By: Sattra
 Implementation-Vendor-Id: br.com.sattra
-Build-Jdk: 1.8.0_201
+Build-Jdk: 1.8.0_211
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/SouEstudante
 Created-By: Maven Integration for Eclipse
