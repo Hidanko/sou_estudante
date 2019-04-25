@@ -1,5 +1,6 @@
 package br.com.nemeth.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +13,12 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "aluno")
-public class Aluno extends Usuario {
+public class Aluno extends Usuario implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public enum Documento {
 		CPF, CODIGO

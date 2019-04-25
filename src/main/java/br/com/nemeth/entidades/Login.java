@@ -1,5 +1,7 @@
 package br.com.nemeth.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "login")
-public class Login {
+public class Login implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Basic
@@ -28,7 +35,7 @@ public class Login {
 	@OneToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
-	
+
 	public String getLogin() {
 		return login;
 	}

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import br.com.nemeth.db.AdministradorDB;
 import br.com.nemeth.db.LoginDB;
 import br.com.nemeth.entidades.Login;
 
@@ -15,6 +16,9 @@ public class LoginMB {
 
 	@Autowired
 	LoginDB loginDB;
+
+	@Autowired
+	AdministradorDB administradorDB;
 
 	private String login;
 	private String senha;
@@ -45,6 +49,9 @@ public class LoginMB {
 	}
 
 	public String validarLogin(String login, String senha) {
+
+		System.out.println(administradorDB.count());
+
 		Optional<Login> resposta = loginDB.findById(login);
 
 		if (!resposta.isPresent()) {
