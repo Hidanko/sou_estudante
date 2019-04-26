@@ -51,4 +51,21 @@ public class Login implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	@Deprecated
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

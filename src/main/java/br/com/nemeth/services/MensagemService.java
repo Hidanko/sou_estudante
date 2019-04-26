@@ -9,7 +9,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class MensagemService {
 
-	public void showMessage(String message, Severity severity) {
+	
+	public void displayInfoMessage(String message) {
+		showMessage(message, FacesMessage.SEVERITY_INFO);
+	}
+
+	public void displayWarnMessage(String message) {
+		showMessage(message, FacesMessage.SEVERITY_WARN);
+	}
+
+	public void displayErrorMessage(String message) {
+		showMessage(message, FacesMessage.SEVERITY_ERROR);
+	}
+	
+	private void showMessage(String message, Severity severity) {
 		if (message != null) {
 			for (String s : message.split("\n")) {
 				FacesMessage facesMessage = new FacesMessage(severity, s, "");

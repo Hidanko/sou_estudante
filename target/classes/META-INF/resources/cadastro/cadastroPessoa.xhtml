@@ -3,51 +3,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
-
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
-	<title>Login</title>
+	<title>Cadastro Aluno</title>
+	<h:outputStylesheet library="dist" name="css/custom.css" />
+	<h:outputStylesheet library="dist" name="css/components.css" />
+	<h:outputStylesheet library="dist" name="css/bootstrap.css" />
+	<h:outputStylesheet library="dist" name="css/AdminLTE.css" />
+	<h:outputStylesheet library="dist"
+		name="css/skins/skin-black-light.css" />
+	<ui:insert name="css" />
 </h:head>
 
 <h:body>
 	<h:panelGroup style="display:block; text-align:center">
-		<div class="m-12 lg-12" style="">
-			<div class="m-8lg-8">
-				<!--nome -->
+		<h:form>
+			<div class="m-12 lg-12" style="">
 				<div class="m-8lg-8">
-					<p:inputText id="nome" maxlength="55" size="100" 
-						title="Nome" value="#{cadstroAlunoMB.aluno.nome}" />
-				</div>
-				<!--email -->
-				<div class="m-8lg-8" style="margin-top: 2%">
-					<p:inputText id="email" maxlength="55" size="100"
-						title="Email" value="#{cadstroAlunoMB.aluno.email}" />
-				</div>
-				<!--data nascimento -->
-				<div class="m-8lg-8" style="margin-top: 2%">
-					<p:outputLabel for="button" value="Data de Nascimento:" />
-					<p:calendar id="button" value="#{cadastroAlunoMB.aluno.nascimento}"
-						showButtonBar="true" />
-				</div>
-<!-- INCLUIR DOCUMENTO ENUM -->
+					<!--nome -->
+					<div class="m-8lg-8" style="margin-top: 5%">
+						<p:inputText id="nome" maxlength="55" size="100" required="true"
+							placeholder="Nome" value="#{cadastroAlunoMB.aluno.nome}" />
+					</div>
+					<!--email -->
+					<div class="m-8lg-8" style="margin-top: 2%">
+						<p:inputText id="email" maxlength="55" size="100" required="true"
+							placeholder="Email" value="#{cadastroAlunoMB.aluno.email}" />
+					</div>
+					<!--data nascimento -->
+					<div class="m-8lg-8" style="margin-top: 2%">
+						<p:outputLabel for="button" value="Data de Nascimento:" />
+						<p:calendar id="button"
+							value="#{cadastroAlunoMB.aluno.nascimento}" showButtonBar="true"
+							required="true" navigator="true" locale="pt_BR" />
+					</div>
+					<!-- INCLUIR DOCUMENTO ENUM -->
 
-				<!--valor documento -->
-				<div class="m-8lg-8" style="margin-top: 2%">
-					<p:inputText id="doc" maxlength="55" size="50" label="Keyword"
-						value="#{cadstroAlunoMB.aluno.valorDocumento}" />
-				</div>
-				<!--senha -->
-				<div class="m-8lg-8" style="margin-top: 2%">
-					<p:inputText id="senha" maxlength="55" size="50" label="Keyword"
-						title="Senha" type="password"
-						value="#{cadstroAlunoMB.aluno.login.senha}" />
+					<!--valor documento -->
+					<div class="m-8lg-8" style="margin-top: 2%">
+						<p:inputText id="doc" maxlength="55" size="50"
+							placeholder="Documento" required="true"
+							value="#{cadastroAlunoMB.aluno.valorDocumento}" />
+					</div>
+					<!--nome -->
+					<div class="m-8lg-8" style="margin-top: 2%">
+						<p:inputText id="login" maxlength="55" size="50" required="true"
+							placeholder="Login" value="#{cadastroAlunoMB.login.login}" />
+					</div>
+					<!--senha -->
+					<div class="m-8lg-8" style="margin-top: 2%">
+						<p:inputText id="senha" maxlength="55" size="50" title="Senha"
+							type="password" placeholder="Senha" required="true"
+							value="#{cadastroAlunoMB.login.senha}" />
+					</div>
+					<div style="margin-top: 3%">
+						<p:commandButton value="Cadastrar"
+							action="#{cadastroAlunoMB.cadastrar}" />
+					</div>
 				</div>
 
-				<p:commandButton value="Cadastrar"
-					outcome="#{cadstroAlunoMB.cadastrar()}" />
 			</div>
-
-		</div>
+		</h:form>
 	</h:panelGroup>
 </h:body>
 

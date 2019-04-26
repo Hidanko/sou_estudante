@@ -1,14 +1,18 @@
 package br.com.nemeth.controles;
 
-import java.util.Optional;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.print.attribute.standard.Severity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.com.nemeth.db.AdministradorDB;
+import br.com.nemeth.db.AlunoDB;
 import br.com.nemeth.db.LoginDB;
 import br.com.nemeth.entidades.Login;
+import br.com.nemeth.services.MensagemService;
 
 @Component
 @Scope("view")
@@ -20,6 +24,12 @@ public class LoginMB {
 	@Autowired
 	AdministradorDB administradorDB;
 
+	@Autowired
+	AlunoDB alunoDB;
+	
+	@Autowired
+	MensagemService mensagemService;
+	
 	private String login;
 	private String senha;
 
@@ -48,21 +58,28 @@ public class LoginMB {
 		this.senha = "";
 	}
 
-	public String validarLogin(String login, String senha) {
-
-		System.out.println(administradorDB.count());
-
-		Optional<Login> resposta = loginDB.findById(login);
-
-		if (!resposta.isPresent()) {
-			System.out.println("Não encontrado");
-			return "";
+	public String validarLogin() {
+		mensagemService.displayErrorMessage("TESTE");
+		Iterable<Login> todos = loginDB.findAll();
+		int cont = 0;
+		for (Login login : todos) {
+			cont++;
+			if (login.getLogin().equals(this.login)) {
+				if (login.getSenha().equals(this.senha)) {
+					return "pagina_inicial.xhtml";
+				} else {
+					System.out.println("Senha errada");
+					FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERRO", "");
+					FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+				}
+			}
 		}
-		Login l = resposta.get();
-		if (l.getSenha().equals(senha)) {
-			return "pagina_inicial";
+		if (cont == 0) {
+			System.out.println("Nenhum login no banco");
 		}
-		System.out.println("Senha inválida");
+		
+		System.out.println(cont + " logins no banco");
+		
 		return "";
 	}
 }
